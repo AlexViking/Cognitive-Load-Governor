@@ -6,26 +6,32 @@
     <title>Document</title>
     <style>
         .Header{
-
+        width: 100%;
+        height: 100px;
+        background-color: blueviolet;
         }
         .side-bar{
             text-align: right;
-            width: 300px;
-            height: 100%;
-            background-color: blue;
+
+           
         }
         .Main-side-bar-body{
-           
+        
         }
         .Side-bar-mini1{
             
         }
         .Side-bar-mini2{
-            text-align: right;
+            display: flex;
+            flex-direction: column;   
+            align-items: flex-end;
+            
          
         }
        .Main-container{
-
+         padding-top: 100px;
+         width:80%
+        
        }
 
     </style>
@@ -49,6 +55,7 @@
             <div class="Side-bar-mini1">
               <h1>Teacher</h1>
               <p>Settings</p>
+              <hr>
             </div>
             <div class="Side-bar-mini2">
             <label>Class Title</label>
