@@ -74,6 +74,48 @@
         .exit-btn:hover {
             background: #dc2626;
         }
+        .main-content{
+             display: flex;
+             padding: 2rem;
+             align-items: center;
+        }
+        .h1{
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 2.5rem;
+            font-weight: 600;
+            padding: 15px;
+        }
+        .p1{
+            display: flex;
+            font-size: 1rem;
+            padding: 10px;
+        }
+        .task{
+            display: flex;
+            align-items: center;
+            bottom: 20px;
+            flex-direction: column;
+
+        }
+        .sidebar{
+            width: 300px;
+        }
+        
+        .correction{
+            text-align: center;
+            padding: 15px;
+        }
+        .h2{
+             position: relative;
+             padding: 2rem;
+            
+        }
+        .p2{
+            
+            
+        }
     </style>
 
 <body>
@@ -89,24 +131,26 @@
         </div>
         <button class="exit-btn" id="exitBtn">Exit Lecture</button>
     </div>
-
-    <div class="header">
-        <div class="logo" id="logo1"></div>
-        <div class="time" id="time1"></div>
-        <div class="exit-btn" id="exit-btn1"></div>
-    </div>
     <div class="main-content">
+        <div class="mainarea">
+            <div class="correction">
         <h1 class="h1">Live Class Session</h1>
-        <p class="p1">Subject:general</p>
+        <p class="p1">Subject: General</p>
+        </div>
+       
         <div class="task">
-            <h1 class="h2">2Today's Task</h1>
+            <h1 class="h2">Today's Task</h1>
             <p class="p2">implement a function that sorts an array using the buble sort algorithm. Make sure to handle
                 edge cases.</p>
         </div>
+       </div>
         <div class="solution">
             <h1 class="h3">Solution.js</h1>
 
         </div>
+        </div>
+
+        <div class="sidebar"></div>
     </div>
 </body>
 
