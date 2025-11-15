@@ -88,6 +88,7 @@
             padding: 2rem;
             overflow-y: auto;
             background: #f9fafb;
+            
         }
 
 
@@ -95,6 +96,7 @@
             font-size: 2rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
+            
         }
 
         .subject-info {
@@ -107,8 +109,8 @@
         .task-container {
             background: white;
             border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
@@ -359,59 +361,76 @@
         <button class="exit-btn" id="exitBtn">Exit Lecture</button>
     </div>
 
-    <div class="main-content">
-        <div class="mainarea">
-            <div class="correction">
-                <h1 class="h1">Live Class Session</h1>
-                <p class="p1">Subject: General</p>
-            </div>
+    <div class="main-layout">
 
-            <div class="task">
+        <div class="main-area">
+            <h1 class="h1">Live Class Session</h1>
+            <p class="p1">Subject: General</p>
+
+            <div class="task-container">
                 <h1 class="h2">Today's Task</h1>
                 <p class="p2">implement a function that sorts an array using the buble sort algorithm. Make sure to
                     handle
                     edge cases.</p>
             </div>
-        </div>
-        <div class="solution">
-            <h1 class="h3">Solution.js</h1>
+            
+            <div class="code-editor-container">
+                <h1 class="h3">Solution.js</h1>
+                <p class="p3">
+                    //Welcome to the lecture code editor-header
+                    //write your code here
 
-        </div>
-    </div>
+                    function helloworld(){
+                        console.log(hello,world);
+                    }
 
-    <!-- Right Sidebar -->
-    <div class="right-sidebar">
-        <div class="sidebar-header">
-            <div class="sidebar-title">Student</div>
-            <div class="sidebar-subtitle">Need Help?</div>
-        </div>
+                    //topic: introduction to algoritmes
+                    // try implementing a simple algoritm
+                </p>
+            </div>
 
-        <div class="sidebar-content">
-            <button class="action-btn raise-hand-btn" id="raiseHandBtn">
-                <span>👋</span>
-                <span>Raise Hand</span>
-            </button>
+            <div class="output-container">
+                <h1 class="output-head">OutPut</h1>
+                <p class="output-p">ready to excute</p>
 
-            <button class="action-btn need-break-btn" id="needBreakBtn">
-                <span>🚻</span>
-                <span>Need Break</span>
-            </button>
-
-            <div class="question-box">
-                <textarea class="question-textarea" id="questionText"
-                    placeholder="Type your question here (teacher will see it)"></textarea>
-                <button class="action-btn ask-question-btn" id="askQuestionBtn">
-                    <span>💬</span>
-                    <span>Ask Question</span>
-                </button>
             </div>
         </div>
 
-        <div class="sidebar-footer">
-            <span class="status-indicator"></span>
-            <span class="status-text" id="statusText">Connected to Lecture</span>
+
+        <!-- Right Sidebar -->
+        <div class="right-sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-title">Student</div>
+                <div class="sidebar-subtitle">Need Help?</div>
+            </div>
+
+            <div class="sidebar-content">
+                <button class="action-btn raise-hand-btn" id="raiseHandBtn">
+                    <span>👋</span>
+                    <span>Raise Hand</span>
+                </button>
+
+                <button class="action-btn need-break-btn" id="needBreakBtn">
+                    <span>🚻</span>
+                    <span>Need Break</span>
+                </button>
+
+                <div class="question-box">
+                    <textarea class="question-textarea" id="questionText"
+                        placeholder="Type your question here (teacher will see it)"></textarea>
+                    <button class="action-btn ask-question-btn" id="askQuestionBtn">
+                        <span>💬</span>
+                        <span>Ask Question</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <span class="status-indicator"></span>
+                <span class="status-text" id="statusText">Connected to Lecture</span>
+            </div>
         </div>
-    </div>
+
     </div>
 
     <!-- Notification Toast -->
