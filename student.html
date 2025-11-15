@@ -1,16 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cognitive Load Governor</title>
-    <style></style>
-</head>
-<header>
-    
-</header>
-<main></main>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            overflow-x: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+            height: 70px;
+        }
+
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .timer-section {
+            text-align: center;
+        }
+
+        .timer-label {
+            font-size: 0.75rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.25rem;
+        }
+
+        .timer-display {
+            font-size: 1.75rem;
+            font-weight: 700;
+            font-family: 'Courier New', monospace;
+        }
+
+        .exit-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .exit-btn:hover {
+            background: #dc2626;
+        }
+    </style>
+
 <body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="logo-section">
+            <span>📚</span>
+            <span>DigiEdu</span>
+        </div>
+        <div class="timer-section">
+            <div class="timer-label">LECTURE TIME</div>
+            <div class="timer-display" id="lectureTimer">00:56:23</div>
+        </div>
+        <button class="exit-btn" id="exitBtn">Exit Lecture</button>
+    </div>
+
     <div class="header">
         <div class="logo" id="logo1"></div>
         <div class="time" id="time1"></div>
@@ -21,12 +100,14 @@
         <p class="p1">Subject:general</p>
         <div class="task">
             <h1 class="h2">2Today's Task</h1>
-            <p class="p2">implement a function that sorts an array using the buble sort algorithm. Make sure to handle edge cases.</p>
+            <p class="p2">implement a function that sorts an array using the buble sort algorithm. Make sure to handle
+                edge cases.</p>
         </div>
         <div class="solution">
             <h1 class="h3">Solution.js</h1>
-            
+
         </div>
     </div>
 </body>
+
 </html>
