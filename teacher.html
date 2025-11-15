@@ -1,74 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .Header{
-        width: 100%;
-        height: 100px;
-        background-color: blueviolet;
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .side-bar{
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            overflow-x: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+            min-height: 70px;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .timer-section {
+            text-align: center;
+        }
+
+        .timer-label {
+            font-size: 0.75rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.25rem;
+        }
+
+        .timer-display {
+            font-size: 1.75rem;
+            font-weight: 700;
+            font-family: 'Courier New', monospace;
+        }
+
+        .attendance {
+            font-size: 0.95rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .attendance-count {
+            font-weight: 700;
+            color: #333;
+        }
+
+
+        .notifications {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            color: #666;
+            cursor: pointer;
+        }
+
+        .notification-badge {
+            background: #ef4444;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .exit-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+
+        .exit-btn:hover {
+            background: #dc2626;
+        }
+
+
+        .Header {
+            width: 100%;
+            height: 100px;
+            background-color: blueviolet;
+        }
+
+        .side-bar {
             text-align: right;
 
-           
-        }
-        .Main-side-bar-body{
-        
-        }
-        .Side-bar-mini1{
-            
-        }
-        .Side-bar-mini2{
-            display: flex;
-            flex-direction: column;   
-            align-items: flex-end;
-            
-         
-        }
-       .Main-container{
-         padding-top: 100px;
-         width:80%
-        
-       }
 
+        }
+
+        .Main-side-bar-body {}
+
+        .Side-bar-mini1 {}
+
+        .Side-bar-mini2 {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+
+
+        }
+
+        .Main-container {
+            padding-top: 100px;
+            width: 80%
+        }
     </style>
 </head>
+
 <body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="logo-section">
+            <span>📚</span>
+            <span>DigiEdu</span>
+        </div>
+        <div class="timer-section">
+            <div class="timer-label">LECTURE TIME</div>
+            <div class="timer-display" id="lectureTimer">00:00:00</div>
+        </div>
+        <div class="attendance">
+            Attendance: <span class="attendance-count" id="navAttendance">0/30</span>
+        </div>
+        <div class="notifications">
+            <span>Notifications</span>
+            <span class="notification-badge" id="navNotifications">0</span>
+        </div>
+        <button class="exit-btn" id="navEndSessionBtn">End Session</button>
+    </div>
 
     <!-- Header for the teacher page -->
-   <div class="Header">
-    <divc class="logo-cont">
-    <img src="" alt="">
-    <h1>DigiEdu</h1>
+    <div class="Header">
+        <divc class="logo-cont">
+            <img src="" alt="">
+            <h1>DigiEdu</h1>
     </div>
     <div class="timer" id="lectureTimer">00.00</div>
     <div>etendecne: <span>0/30</span></div>
     <div>notification: <span>0</span></div>
     <div><button>End Session</button></div>
-   </div>
+    </div>
     <!--side-bar for the teacher page -->
     <div class="side-bar">
-        <div class="Main-side-bar-body" >
+        <div class="Main-side-bar-body">
             <div class="Side-bar-mini1">
-              <h1>Teacher</h1>
-              <p>Settings</p>
-              <hr>
+                <h1>Teacher</h1>
+                <p>Settings</p>
+                <hr>
             </div>
             <div class="Side-bar-mini2">
-            <label>Class Title</label>
-            <input /> 
-            <label>Subject</label>
-            <input /> 
-            <label>Total Enrolled Students</label>
-            <input /> 
+                <label>Class Title</label>
+                <input />
+                <label>Subject</label>
+                <input />
+                <label>Total Enrolled Students</label>
+                <input />
             </div>
         </div>
-    </div> 
+    </div>
     <!-- mian for the teacher page -->
     <div class="Main-container">
     </div>
 </body>
+
 </html>
