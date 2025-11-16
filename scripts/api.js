@@ -145,7 +145,7 @@ function validateAPIConfig() {
  * @returns {string} - Full URL for students to join
  */
 function createSessionURL(sessionId, title = '', subject = '', totalStudents = null) {
-	const baseURL = window.location.origin + window.location.pathname.replace('dashboard.html', '');
+	const baseURL = window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
 	let url = `${baseURL}classLink.html?session=${sessionId}`;
 
 	if (title) {
