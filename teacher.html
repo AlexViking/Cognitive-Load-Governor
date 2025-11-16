@@ -572,77 +572,134 @@
 
     <script>
         // Timer functionality
-    let seconds = 0;
-    function timer(){
-        const hours = Math.floor(seconds/3600);
-        const minutes = Math.floor((seconds % 3600) / 60);
-        const secs = seconds % 60;
-        const timerEl = document.getElementById('lectureTimer');
-        if(timerEl) {
-            timerEl.textContent =
-            `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
-        } 
-        seconds++;
-    }
-    setInterval(timer, 1000);
-   
-    function updateProgressBar(value){
-        const progressBar = document.getElementById('progressBar');
-        const gaugeScore = document.getElementById('gaugeScore');
-        if(progressBar && gaugeScore){
-            progressBar.style.width = value + '%';
-            gaugeScore.textContent = value;
+        let seconds = 0;
+        function timer() {
+            const hours = Math.floor(seconds / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            const secs = seconds % 60;
+            const timerEl = document.getElementById('lectureTimer');
+            if (timerEl) {
+                timerEl.textContent =
+                    `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            }
+            seconds++;
         }
-    }
+        setInterval(timer, 1000);
 
-    function initHistoryCart() {
-    const container = document.getElementById('historyChartContainer');
-    const width = container.clientWidth || 400;
-    const height = 200;
-    const margin = {top: 20, right:20, bottom:30, left: 50};
-    const innerWidth = width - margin.left - margin.right;
-    const innerHeight = height - margin.top - margin.bottom;
+        function updateProgressBar(value) {
+            const progressBar = document.getElementById('progressBar');
+            const gaugeScore = document.getElementById('gaugeScore');
+            if (progressBar && gaugeScore) {
+                progressBar.style.width = value + '%';
+                gaugeScore.textContent = value;
+            }
+        }
 
-    d3.select('#historyChart').selectAll('*').remove();
-     const svg = d3.select('#historyChart')
-       .attr('width', width)
-       .attr('height', height);
+        // D3.js History Chart
+        let historyChartInstance = null;
 
-     const g = svg.append('g')
-       .attr('transform', `translate(${margin.left},${margin.top})`);
-       
-     hiosryChartInstance = {
-        svg,
-        g,
-        width: innerWidth,
-        height: innerHeight,
-        isDark,
-        x: d3.scaleTime().range([0, innerWidth]),
-        y: d3.scaleLinear().range([innerHeight, 0])
-     };
-     historyChartInstance.xAxisGroup = g.append('g')
-        .attr('class', 'x-axis')
-        .attr('transform', `translate(0, ${innerHeight})`)
-        .atyle('color', isDark ? '#666' : '#999');
+        function initHistoryChart() {
+            const container = document.getElementById('historyChartContainer');
+            const width = container.clientWidth || 400;
+            const height = 200;
+            const margin = { top: 20, right: 20, bottom: 30, left: 50 };
+            const innerWidth = width - margin.left - margin.right;
+            const innerHeight = height - margin.top - margin.bottom;
 
-     historyChartInstance.yAxisGroup = g.append('g')
-        .attr('class', 'y-axis')
-        .style('color', isDark ? '#666' : '#999');
+            d3.select('#historyChart').selectAll('*').remove();
+            const svg = d3.select('#historyChart')
+                .attr('width', width)
+                .attr('height', height);
 
-     historyChartInstance.path = g.append('path')
-        .attr('class', 'line')
-        .attr('fill', 'none')
-        .attr('stroke', '#3b82f6')
-        .attr('stoke-width', 2);
-     hiosryChartInstance.gridLines = g.append('g')
-        .attr('class', 'grid')
-        .style('stroke', isDark ? '#333' : '#e0e0e0')
-        .style('stroke-opaxity', 0.5);
+            const g = svg.append('g')
+                .attr('transform', `translate(${margin.left},${margin.top})`);
 
-    console.log('D3 History Chart Initialized')
-    }
+            hiosryChartInstance = {
+                svg,
+                g,
+                width: innerWidth,
+                height: innerHeight,
+                isDark,
+                x: d3.scaleTime().range([0, innerWidth]),
+                y: d3.scaleLinear().range([innerHeight, 0])
+            };
+            historyChartInstance.xAxisGroup = g.append('g')
+                .attr('class', 'x-axis')
+                .attr('transform', `translate(0, ${innerHeight})`)
+                .atyle('color', isDark ? '#666' : '#999');
 
-  
+            historyChartInstance.yAxisGroup = g.append('g')
+                .attr('class', 'y-axis')
+                .style('color', isDark ? '#666' : '#999');
+
+            historyChartInstance.path = g.append('path')
+                .attr('class', 'line')
+                .attr('fill', 'none')
+                .attr('stroke', '#3b82f6')
+                .attr('stoke-width', 2);
+            hiosryChartInstance.gridLines = g.append('g')
+                .attr('class', 'grid')
+                .style('stroke', isDark ? '#333' : '#e0e0e0')
+                .style('stroke-opaxity', 0.5);
+
+            console.log('D3 History Chart Initialized')
+        }
+
+        function updateHistoryChart(data) {
+            if (!historyChartInstance || !data || data.length === 0) {
+                if (!historyChartInstance) {
+                    initHistoryChart();
+                }
+                return;
+            }
+
+            const { x, y, path, xAxisGroup, yAxisGroup, gridLines, width, height } = historyChartInstance;
+
+            // Update scales
+            x.domain(d3.extent(data, d => d.timestamp));
+            y.domain([0, 100]);
+
+            // Update axes
+            const xAxis = d3.axisBottom(x).ticks(5).tickFormat(d3.timeFormat('%H:%M'));
+            const yAxis = d3.axisLeft(y).ticks(5);
+
+            xAxisGroup.transition().duration(300).call(xAxis);
+            yAxisGroup.transition().duration(300).call(yAxis);
+
+            // Update grid lines
+            gridLines.selectAll('line').remove();
+            y.ticks(5).forEach(tick => {
+                gridLines.append('line')
+                    .attr('x1', 0)
+                    .attr('x2', width)
+                    .attr('y1', y(tick))
+                    .attr('y2', y(tick));
+            });
+
+            // Update line
+            const line = d3.line()
+                .x(d => x(d.timestamp))
+                .y(d => y(d.score))
+                .curve(d3.curveMonotoneX);
+
+            path.datum(data)
+                .transition()
+                .duration(300)
+                .attr('d', line);
+        }
+
+        // Initialize chart on load
+        window.addEventListener('load', () => {
+            setTimeout(initHistoryChart, 100);
+        });
+
+        // Reinitialize on resize
+        window.addEventListener('resize', () => {
+            initHistoryChart();
+        });
+
+        // Make updateHistoryChart available globally
+        window.updateHistoryChart = updateHistoryChart;
 
     </script>
 </body>
