@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>DigiEdu - Cognitive Load Monitor</title>
+    <link rel="stylesheet" href="styles-minimal.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         /* Reset and base styles */
         * {
@@ -459,11 +461,11 @@
         <button class="exit-btn" id="navEndSessionBtn">End Session</button>
     </div>
 
-
     <!-- Main Layout -->
     <div class="main-layout">
         <!-- Main Area -->
         <div class="main-area">
+            <!-- Cognitive Load Progress Bar -->
             <div class="gauge-card">
                 <h2 class="gauge-title">Cognitive Load Score</h2>
                 <div class="progress-container">
@@ -477,6 +479,7 @@
                 </div>
             </div>
 
+            <!-- Trends and History Cards -->
             <div class="cards-grid">
                 <div class="trends-card">
                     <span class="card-title">Student Activity Trends <span class="time-frame">(Last 5 Min)</span></span>
@@ -506,6 +509,7 @@
                 </div>
             </div>
 
+            <!-- Student Requests -->
             <div class="requests-card">
                 <span class="card-title">Student Requests (<span id="totalRequestsCount">0</span>)</span>
                 <div class="requests-list" id="requestsList">
@@ -556,6 +560,20 @@
     <div class="toast" id="toast">
         <span id="toastMessage"></span>
     </div>
+
+    <!-- Load D3.js -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- Load scripts -->
+    <script src="config.js"></script>
+    <script src="scripts/timestamp-utils.js"></script>
+    <script src="scripts/api.js"></script>
+    <script src="scripts/dashboard.js"></script>
+
+    <script>
+        // Timer functionality
+
+    </script>
 </body>
 
 </html>
