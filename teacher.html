@@ -572,7 +572,19 @@
 
     <script>
         // Timer functionality
-
+    let seconds = 0;
+    function timer(){
+        const hours = Math.floor(seconds/3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        const secs = seconds % 60;
+        const timerEl = document.getElementById('lectureTimer');
+        if(timerEl) {
+            timerEl.textContent =
+            `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+        } 
+        seconds++;
+    }
+    setInterval(timer, 1000);
     </script>
 </body>
 
