@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cognitive Load Governor</title>
+    <title>Student Session - DigiEdu</title>
+    <link rel="stylesheet" href="styles-minimal.css">
     <style>
         /* Reset and base styles */
         * {
@@ -88,7 +89,6 @@
             padding: 2rem;
             overflow-y: auto;
             background: #f9fafb;
-            
         }
 
 
@@ -96,7 +96,6 @@
             font-size: 2rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
-            
         }
 
         .subject-info {
@@ -109,8 +108,8 @@
         .task-container {
             background: white;
             border-radius: 12px;
-            padding: 2.5rem;
-            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
@@ -346,6 +345,7 @@
             }
         }
     </style>
+</head>
 
 <body>
     <!-- Top Bar -->
@@ -361,41 +361,45 @@
         <button class="exit-btn" id="exitBtn">Exit Lecture</button>
     </div>
 
+    <!-- Main Layout -->
     <div class="main-layout">
-
+        <!-- Main Area -->
         <div class="main-area">
-            <h1 class="h1">Live Class Session</h1>
-            <p class="p1">Subject: General</p>
+            <h1 class="lecture-title" id="classTitle">Algorithms 101</h1>
+            <p class="subject-info" id="subjectName">Subject: Computer Science</p>
 
+            <!-- Today's Task -->
             <div class="task-container">
-                <h1 class="h2">Today's Task</h1>
-                <p class="p2">implement a function that sorts an array using the buble sort algorithm. Make sure to
-                    handle
-                    edge cases.</p>
-            </div>
-            
-            <div class="code-editor-container">
-                <h1 class="h3">Solution.js</h1>
-                <p class="p3">
-                    //Welcome to the lecture code editor-header
-                    //write your code here
-
-                    function helloworld(){
-                        console.log(hello,world);
-                    }
-
-                    //topic: introduction to algoritmes
-                    // try implementing a simple algoritm
+                <h2 class="task-title">Today's Task</h2>
+                <p class="task-description">
+                    Implement a function that sorts an array using the bubble sort algorithm. Make sure to handle edge
+                    cases.
                 </p>
             </div>
 
-            <div class="output-container">
-                <h1 class="output-head">OutPut</h1>
-                <p class="output-p">ready to excute</p>
+            <!-- Code Editor -->
+            <div class="code-editor-container">
+                <div class="editor-header">
+                    <span class="file-name">solution.js</span>
+                    <button class="run-btn" id="runCodeBtn">Run Code</button>
+                </div>
+                <div class="code-area">// Welcome to the Lecture Code Editor
+                    // Write your code here...
 
+                    function helloWorld() {
+                    console.log("Hello, World!");
+                    }
+
+                    // Topic: Introduction to Algorithms
+                    // Try implementing a simple algorithm</div>
+            </div>
+
+            <!-- Output -->
+            <div class="output-container">
+                <h2 class="output-title">Output</h2>
+                <div class="output-area">Ready to execute...</div>
             </div>
         </div>
-
 
         <!-- Right Sidebar -->
         <div class="right-sidebar">
@@ -430,13 +434,26 @@
                 <span class="status-text" id="statusText">Connected to Lecture</span>
             </div>
         </div>
-
     </div>
 
     <!-- Notification Toast -->
     <div class="toast" id="toast">
         <span id="toastMessage"></span>
     </div>
+
+    <!-- Load scripts -->
+    <script src="config.js"></script>
+    <script src="scripts/debounce.js"></script>
+    <script src="scripts/rolling-average.js"></script>
+    <script src="scripts/form-submitter.js"></script>
+    <script src="scripts/tab-monitor.js"></script>
+    <script src="scripts/classLink.js"></script>
+
+    <!-- Timer script -->
+    <script>
+        // Timer Functionality
+
+    </script>
 </body>
 
 </html>
