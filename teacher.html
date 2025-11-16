@@ -585,6 +585,18 @@
         seconds++;
     }
     setInterval(timer, 1000);
+   
+    function updateProgressBar(value){
+        const progressBar = document.getElementById('progressBar');
+        const gaugeScore = document.getElementById('gaugeScore');
+        if(progressBar && gaugeScore){
+            progressBar.style.width = value + '%';
+            gaugeScore.textContent = value;
+        }
+    }
+
+  
+
     </script>
 </body>
 
